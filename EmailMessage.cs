@@ -7,21 +7,9 @@ namespace StockAlert
     public class EmailMessage
     {
         string _server, _sender, _receiver, _username, _password, _message;        
-
-        #region Properties
-        public String Server { get { return _server; } set { if(value!= null) _server = value; }}
-
-        public String Sender { get { return _sender; } set { if (value != null) _sender = value; }}
-
-        public String Receiver { get { return _receiver; } set { if (value != null) _receiver = value; }}
-
-        public String Username { get { return _username; } set { if (value != null) _username = value; }}
-
-        public String Password { get { return _password; } set { if (value != null) _password = value; }}
-
+             
         public String Message { get { return _message; } set { if (value != null) _message = value; }}
-        #endregion
-
+      
         MailMessage mail = new MailMessage();
 
         private void SetCredentials()
@@ -30,8 +18,7 @@ namespace StockAlert
             _sender = ConfigurationManager.AppSettings["sender"];
             _receiver = ConfigurationManager.AppSettings["receiver"];
             _username = ConfigurationManager.AppSettings["username"];
-            _password = ConfigurationManager.AppSettings["password"];
-            Console.WriteLine(_server);
+            _password = ConfigurationManager.AppSettings["password"];            
         }
         public SmtpClient ServerConnection()
         {
