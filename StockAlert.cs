@@ -11,15 +11,19 @@ namespace StockAlert
             string _chosenStock = args[0];
             string _actionMessage;
             float _salePrice = float.Parse(args[1], CultureInfo.InvariantCulture.NumberFormat);
-            float _purchasePrice = float.Parse(args[2], CultureInfo.InvariantCulture.NumberFormat);
-
-            //_actionMessage = ConfigurationManager.AppSettings["sale"];
+            float _purchasePrice = float.Parse(args[2], CultureInfo.InvariantCulture.NumberFormat);            
 
             EmailMessage msg = new EmailMessage();
-            msg.Username = "johnDoe";
-            Console.WriteLine(msg.Username);
+            msg.Server = "smtp.gmail.com";
+            msg.Username = args[3];
+            msg.Sender = msg.Username + "@gmail.com";
+            msg.Receiver = args[4] + "@gmail.com";            
+            msg.Password = args[5];
+            msg.Message = ConfigurationManager.AppSettings["sale"] + _chosenStock;
 
-        }          
+            Console.WriteLine($"{msg.Server}\n{msg.Sender}\n{msg.Receiver}\n{msg.Username}\n{msg.Password}\n{msg.Message}");
+
+        }
 
     }
 
