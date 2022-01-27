@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Net.Mail;
+using System.Configuration;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -10,7 +11,8 @@ namespace StockAlert
 {
     public class EmailMessage
     {
-        string _server, _sender, _receiver, _username, _password, _message;
+        string _server= ConfigurationManager.AppSettings["server"];
+        string _sender, _receiver, _username, _password, _message;
         MailMessage mail = new MailMessage();
 
         public String Server 
@@ -57,6 +59,8 @@ namespace StockAlert
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential(_username, _password);
             SmtpServer.EnableSsl = true;
+
+            Console.WriteLine("Conexão feita");
             return SmtpServer;
         }
 
