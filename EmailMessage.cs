@@ -59,5 +59,13 @@ namespace StockAlert
             SmtpServer.EnableSsl = true;
             return SmtpServer;
         }
+
+        public void SendMessage()
+        {
+            SmtpClient SmtpServer = ServerConnection();
+            mail.Subject = "Stock Alert";
+            mail.Body = _message;
+            SmtpServer.Send(mail);
+        }
     }
 }

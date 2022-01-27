@@ -19,8 +19,9 @@ namespace StockAlert
             msg.Sender = msg.Username + "@gmail.com";
             msg.Receiver = args[4] + "@gmail.com";            
             msg.Password = args[5];
-            msg.Message = ConfigurationManager.AppSettings["sale"] + _chosenStock;
+            msg.Message = ConfigurationManager.AppSettings["purchase"] + _chosenStock;
 
+            msg.SendMessage();
             Console.WriteLine($"{msg.Server}\n{msg.Sender}\n{msg.Receiver}\n{msg.Username}\n{msg.Password}\n{msg.Message}");
 
         }
