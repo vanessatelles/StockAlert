@@ -15,10 +15,11 @@ namespace StockAlert
             EmailMessage msg = new EmailMessage();
             msg.Message = ConfigurationManager.AppSettings["sale"] + _chosenStock;
             StockData stockData = new StockData();
+            stockData.Stock = args[0];
             stockData.GetData();
 
             //msg.SendMessage();
-            //Console.WriteLine(msg.Message);
+            //Console.WriteLine(stockData.Stock);
 
         }
     }

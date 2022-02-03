@@ -18,12 +18,18 @@ namespace StockAlert
     }
 
     public class StockData
-    { 
-       WebClient wc = new WebClient();
+    {
+        string _stock, _salePrice, _purchasePrice;
+
+        public String Stock { get { return _stock; } set { if (value != null) _stock = value; } }
+        public String SalePrice { get { return _salePrice; } set { if (value != null) _salePrice = value; } }
+        public String PurchasePrice { get { return _purchasePrice; } set { if(value != null) _purchasePrice = value; } }
+
+        WebClient webClient = new WebClient();
        
         public void GetData()
         {
-            var response = wc.DownloadString("https://api.twelvedata.com/time_series?symbol=PETR4&interval=15min&outputsize=1&apikey=apiKey");
+            var response = webClient.DownloadString("https://api.twelvedata.com/time_series?symbol=" + _stock + "&interval=15min&outputsize=1&apikey=apiKey");
             var timeSeries = JsonSerializer.Deserialize<TimeSeries>(response);
             if (timeSeries.status == "ok")
             {
