@@ -3,3 +3,4 @@ bin
 obj
 StockAlert.sln
 *.exe
+App.exe.config
