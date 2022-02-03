@@ -8,39 +8,38 @@ namespace StockAlert
 {
     class Principal 
     {
+        private static System.Timers.Timer aTimer;
         static void Main(string[] args)
         {
             //Reference values
             StockData stockData = new StockData();
             stockData.Stock = args[0];
             stockData.SalePrice = float.Parse(args[1], CultureInfo.InvariantCulture.NumberFormat);
-            stockData.PurchasePrice = float.Parse(args[2], CultureInfo.InvariantCulture.NumberFormat);            
-                        
-            EmailMessage message = new EmailMessage();
-            System.Timers.Timer timer = new System.Timers.Timer(TimeSpan.FromMinutes(1).TotalMilliseconds);
-            timer.AutoReset = true;            
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(MyMethod);
-            timer.Start();
-            Console.WriteLine($"Stock alert using {stockData.Stock} with sale price of {stockData.SalePrice} and purchase price of {stockData.PurchasePrice}.");
+            stockData.PurchasePrice = float.Parse(args[2], CultureInfo.InvariantCulture.NumberFormat);
 
+            SetTimer();
 
-            //stockData.Test();
-            System.Console.ReadKey();
-            /*
-            for (; ; )
-              {                       
-                // Keep the console window open in debug mode.
-               // Console.WriteLine("Press any key to exit.");
-               // System.Console.ReadKey();
-            }*/
+            Console.WriteLine("Stock alert fires the event every two minutes. Press the Enter key to exit the application.\n");
+            Console.WriteLine($"Stock Alert is current using {stockData.Stock} with reference values as: \nSale price: \t{stockData.SalePrice}\nPurchase price:\t{stockData.PurchasePrice}");
+            Console.ReadLine();
+            aTimer.Stop();
+            aTimer.Dispose();
 
+            Console.WriteLine("Terminating the application...");
         }
-        public static void MyMethod(object sender, ElapsedEventArgs e)
+        private static void SetTimer()
+        {
+            // Create a timer with a two second interval.
+            aTimer = new System.Timers.Timer(30000);
+            // Hook up the Elapsed event for the timer. 
+            aTimer.Elapsed += OnTimedEvent;
+            aTimer.AutoReset = true;
+            aTimer.Enabled = true;
+        }
+        public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             Console.WriteLine("Tick: {0}", DateTime.Now.ToString("h:mm:ss"));
-            //stockData.Test()
         }
-
     }
 
 }
