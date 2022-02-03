@@ -13,12 +13,14 @@ namespace StockAlert
             float _purchasePrice = float.Parse(args[2], CultureInfo.InvariantCulture.NumberFormat);            
 
             EmailMessage msg = new EmailMessage();
-            msg.Message = ConfigurationManager.AppSettings["sale"] + _chosenStock;           
+            msg.Message = ConfigurationManager.AppSettings["sale"] + _chosenStock;
+            StockData stockData = new StockData();
+            stockData.GetData();
 
             //msg.SendMessage();
             //Console.WriteLine(msg.Message);
 
-        }     
+        }
     }
 
 }

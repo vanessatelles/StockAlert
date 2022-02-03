@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "StockAlert": {
+      "commandName": "Project",
+      "commandLineArgs": "PETR4.SA 23.4 25.3"
+    }
+  }
+}
