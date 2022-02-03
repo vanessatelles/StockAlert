@@ -8,7 +8,7 @@ namespace StockAlert
     {
         string _server, _sender, _receiver, _username, _password, _message;        
              
-        public String Message { get { return _message; } set { if (value != null) _message = value; }}
+        public string Message { get { return _message; } set { if (value != null) _message = value; }}
       
         MailMessage mail = new MailMessage();
 
