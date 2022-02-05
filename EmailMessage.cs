@@ -23,7 +23,9 @@ namespace StockAlert
         public SmtpClient ServerConnection()
         {
             SetCredentials();
+
             SmtpClient SmtpServer = new SmtpClient(_server);
+
             mail.From = new MailAddress(_sender);
             mail.To.Add(_receiver);
             SmtpServer.Port = 587;
@@ -38,6 +40,7 @@ namespace StockAlert
         public void SendMessage()
         {
             SmtpClient SmtpServer = ServerConnection();
+
             mail.Subject = "Stock Alert";
             mail.Body = _message;
             SmtpServer.Send(mail);

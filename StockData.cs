@@ -14,8 +14,8 @@ namespace StockAlert
 
     public class StockData
     {
-        string _stock;
-        float _salePrice, _purchasePrice;
+        private string _stock;
+        private float _salePrice, _purchasePrice;
 
         public string Stock { get { return _stock; } set { if (value != null) _stock = value; } }
         public float SalePrice { get { return _salePrice; } set { _salePrice = value; } }
@@ -26,6 +26,7 @@ namespace StockAlert
         {
             var response = webClient.DownloadString("https://api.twelvedata.com/time_series?symbol=" + _stock + "&interval=15min&outputsize=1&apikey=apiKey");
             var timeSeries = JsonSerializer.Deserialize<TimeSeries>(response);
+
             if (timeSeries.status == "ok")
             {
                 Console.WriteLine("Received symbol: " + timeSeries.meta["symbol"] + ", close: " + timeSeries.values[0]["close"]);
@@ -36,21 +37,23 @@ namespace StockAlert
         
         public void CompareValues()
         {
+            EmailMessage emailMessage = new EmailMessage();
+
             TimeSeries timeSeries = GetData();
 
             if (float.Parse(timeSeries.values[0]["close"], CultureInfo.InvariantCulture.NumberFormat) > _salePrice)
             {
-                Console.WriteLine("API value > Sale Price");
-                Console.WriteLine(timeSeries.values[0]["close"] + "\t" + _salePrice ) ;
+                emailMessage.Message = $"Sugestion: Sell {timeSeries.meta["symbol"]}";
+                Console.WriteLine(emailMessage.Message);
             }
             else if (float.Parse(timeSeries.values[0]["close"], CultureInfo.InvariantCulture.NumberFormat) < _purchasePrice)
             {
-                Console.WriteLine("API value < Purchase Price");
-                Console.WriteLine(timeSeries.values[0]["close"] + "\t" + _purchasePrice);
+                emailMessage.Message = $"Sugestion: Buy {timeSeries.meta["symbol"]}";
+                Console.WriteLine(emailMessage.Message);
             }
             else
             {
-                Console.WriteLine( "Valor dentro dos limites.");
+                Console.WriteLine("Valor dentro dos limites.");
             }
         }
     }

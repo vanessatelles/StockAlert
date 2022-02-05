@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Configuration;
 using System.Globalization;
-
-using System.Timers;
 
 namespace StockAlert
 {
@@ -25,6 +22,7 @@ namespace StockAlert
             Console.WriteLine("Stock alert fires the event every two minutes. Press the Enter key to exit the application.\n");
             Console.WriteLine($"Stock Alert is current using {_choosenStock} with reference values as: \nSale price: \t{_salePrice}\nPurchase price:\t{_purchasePrice}");
             Console.ReadLine();
+
             aTimer.Stop();
             aTimer.Dispose();
 
@@ -43,10 +41,8 @@ namespace StockAlert
 
         
         private static void SetTimer()
-        {
-            // Create a timer with a two second interval.
+        {            
             aTimer = new System.Timers.Timer(30000);
-            // Hook up the Elapsed event for the timer. 
             aTimer.Elapsed += OnTimedEvent;
             aTimer.AutoReset = true;
             aTimer.Enabled = true;
