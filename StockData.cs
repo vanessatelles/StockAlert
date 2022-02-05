@@ -44,11 +44,13 @@ namespace StockAlert
             if (float.Parse(timeSeries.values[0]["close"], CultureInfo.InvariantCulture.NumberFormat) > _salePrice)
             {
                 emailMessage.Message = $"Sugestion: Sell {timeSeries.meta["symbol"]}";
+                emailMessage.SendMessage();
                 Console.WriteLine(emailMessage.Message);
             }
             else if (float.Parse(timeSeries.values[0]["close"], CultureInfo.InvariantCulture.NumberFormat) < _purchasePrice)
             {
                 emailMessage.Message = $"Sugestion: Buy {timeSeries.meta["symbol"]}";
+                emailMessage.SendMessage();
                 Console.WriteLine(emailMessage.Message);
             }
             else

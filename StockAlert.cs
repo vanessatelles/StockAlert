@@ -42,7 +42,7 @@ namespace StockAlert
         
         private static void SetTimer()
         {            
-            aTimer = new System.Timers.Timer(30000);
+            aTimer = new System.Timers.Timer(120000);
             aTimer.Elapsed += OnTimedEvent;
             aTimer.AutoReset = true;
             aTimer.Enabled = true;
@@ -50,7 +50,6 @@ namespace StockAlert
         public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             StockValues();
-            Console.WriteLine("Tick: {0}", DateTime.Now.ToString("h:mm:ss"));
         }
     }
 
