@@ -6,9 +6,9 @@ namespace StockAlert
 {
     public class EmailMessage
     {
-        string _server, _sender, _receiver, _username, _password, _message;        
+        private string _server, _sender, _receiver, _username, _password, _message;        
              
-        public string Message { get { return _message; } set { if (value != null) _message = value; }}
+        public string Message { get { return _message; } set { if (value != null) _message = value; } }
       
         MailMessage mail = new MailMessage();
 
@@ -29,6 +29,8 @@ namespace StockAlert
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential(_username, _password);
             SmtpServer.EnableSsl = true;
+
+            Console.WriteLine("server:" + _server);
 
             return SmtpServer;
         }

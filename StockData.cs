@@ -18,8 +18,8 @@ namespace StockAlert
         float _salePrice, _purchasePrice;
 
         public string Stock { get { return _stock; } set { if (value != null) _stock = value; } }
-        public float SalePrice { get { return _salePrice; } set { if (value != null) _salePrice = value; } }
-        public float PurchasePrice { get { return _purchasePrice; } set { if (value != null) _purchasePrice = value; } }
+        public float SalePrice { get { return _salePrice; } set { _salePrice = value; } }
+        public float PurchasePrice { get { return _purchasePrice; } set { _purchasePrice = value; } }
 
         WebClient webClient = new WebClient();
         private TimeSeries GetData()
@@ -41,18 +41,17 @@ namespace StockAlert
             if (float.Parse(timeSeries.values[0]["close"], CultureInfo.InvariantCulture.NumberFormat) > _salePrice)
             {
                 Console.WriteLine("API value > Sale Price");
-                Console.Write(timeSeries.values[0]["close"] + "\t" + _salePrice ) ;
+                Console.WriteLine(timeSeries.values[0]["close"] + "\t" + _salePrice ) ;
+            }
+            else if (float.Parse(timeSeries.values[0]["close"], CultureInfo.InvariantCulture.NumberFormat) < _purchasePrice)
+            {
+                Console.WriteLine("API value < Purchase Price");
+                Console.WriteLine(timeSeries.values[0]["close"] + "\t" + _purchasePrice);
             }
             else
             {
-                Console.WriteLine("API value < Sale Price");
-                Console.Write(timeSeries.values[0]["close"] + "\t" + _salePrice);
+                Console.WriteLine( "Valor dentro dos limites.");
             }
-        }
-
-        public void Test()
-        {
-            Console.WriteLine($"Testing time function with {_stock}");
         }
     }
 }

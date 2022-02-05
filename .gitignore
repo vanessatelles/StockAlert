@@ -1,6 +1,7 @@
 .vs
 bin
 obj
+runtimes
 StockAlert.sln
+App.config
 *.exe
-App.exe.config
