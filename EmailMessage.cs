@@ -1,18 +1,19 @@
-﻿using System;
-using System.Net.Mail;
+﻿using System.Net.Mail;
 using System.Configuration;
 
 namespace StockAlert
 {
     public class EmailMessage
     {
+        // Field
         private string _server, _sender, _receiver, _username, _password, _message;        
-             
+        
+        // Properties
         public string Message { get { return _message; } set { if (value != null) _message = value; } }
       
         MailMessage mail = new MailMessage();
 
-        private void SetCredentials()
+        public EmailMessage()
         {
             _server = ConfigurationManager.AppSettings["server"];
             _sender = ConfigurationManager.AppSettings["sender"];
@@ -20,30 +21,29 @@ namespace StockAlert
             _username = ConfigurationManager.AppSettings["username"];
             _password = ConfigurationManager.AppSettings["password"];            
         }
-        public SmtpClient ServerConnection()
-        {
-            SetCredentials();
 
-            SmtpClient SmtpServer = new SmtpClient(_server);
+
+        private SmtpClient ServerConnection()
+        {
+            SmtpClient smtpServer = new SmtpClient(_server);
 
             mail.From = new MailAddress(_sender);
             mail.To.Add(_receiver);
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential(_username, _password);
-            SmtpServer.EnableSsl = true;
+            smtpServer.Port = 587;
+            smtpServer.Credentials = new System.Net.NetworkCredential(_username, _password);
+            smtpServer.EnableSsl = true;
 
-            Console.WriteLine("server:" + _server);
-
-            return SmtpServer;
+            return smtpServer;
         }
+
 
         public void SendMessage()
         {
-            SmtpClient SmtpServer = ServerConnection();
+            SmtpClient smtpServer = ServerConnection();
 
             mail.Subject = "Stock Alert";
             mail.Body = _message;
-            SmtpServer.Send(mail);
+            smtpServer.Send(mail);
         }
     }
 }

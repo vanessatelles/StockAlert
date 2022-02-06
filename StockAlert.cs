@@ -1,14 +1,14 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace StockAlert
 {
     class Principal 
     {
-        private static System.Timers.Timer aTimer;
+        private static System.Timers.Timer _timer;
         private static string _choosenStock;
         private static float _salePrice;
         private static float _purchasePrice;
+        
         static void Main(string[] args)
         {
             //Reference values            
@@ -23,13 +23,16 @@ namespace StockAlert
             Console.WriteLine($"Stock Alert is current using {_choosenStock} with reference values as: \nSale price: \t{_salePrice}\nPurchase price:\t{_purchasePrice}");
             Console.ReadLine();
 
-            aTimer.Stop();
-            aTimer.Dispose();
+            _timer.Stop();
+            _timer.Dispose();
 
             Console.WriteLine("Terminating the application.");
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private static void StockValues()
         {
             StockData stockData = new StockData();
@@ -41,12 +44,14 @@ namespace StockAlert
 
         
         private static void SetTimer()
-        {            
-            aTimer = new System.Timers.Timer(120000);
-            aTimer.Elapsed += OnTimedEvent;
-            aTimer.AutoReset = true;
-            aTimer.Enabled = true;
+        {
+            _timer = new System.Timers.Timer(30000);
+            _timer.Elapsed += OnTimedEvent;
+            _timer.AutoReset = true;
+            _timer.Enabled = true;
         }
+
+
         public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             StockValues();
