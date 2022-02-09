@@ -24,7 +24,7 @@ namespace StockAlert
 
         // Object
         WebClient webClient = new WebClient();
-        public TimeSeries GetData()
+        private TimeSeries GetData()
         {
             string response = webClient.DownloadString("https://api.twelvedata.com/time_series?symbol=" + _stock + "&interval=15min&outputsize=1&apikey=apiKey");
             TimeSeries timeSeries = JsonSerializer.Deserialize<TimeSeries>(response);
@@ -46,13 +46,11 @@ namespace StockAlert
 
             if (float.Parse(timeSeries.values[0]["close"], CultureInfo.InvariantCulture.NumberFormat) > _salePrice)
             {
-                
-                Console.WriteLine("Sell.");
+                CallMessenger("Sell", timeSeries);
             }
             else if (float.Parse(timeSeries.values[0]["close"], CultureInfo.InvariantCulture.NumberFormat) < _purchasePrice)
             {
-                
-                Console.WriteLine("Buy.");
+                CallMessenger("Buy", timeSeries);
             }
             else
             {

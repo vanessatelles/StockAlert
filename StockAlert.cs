@@ -40,8 +40,7 @@ namespace StockAlert
             stockData.Stock = _choosenStock;
             stockData.PurchasePrice = _purchasePrice;
             stockData.SalePrice = _salePrice;
-            //stockData.CompareValues();
-            stockData.GetData();
+            stockData.CompareValues();
         }
 
         
