@@ -5,7 +5,7 @@ namespace StockAlert
     class Principal 
     {
         private static System.Timers.Timer _timer;
-        private static string _choosenStock;
+        private static string? _choosenStock;
         private static float _salePrice;
         private static float _purchasePrice;
         
@@ -37,9 +37,10 @@ namespace StockAlert
         private static void StockValues()
         {
             StockData stockData = new StockData();
-            stockData.Stock = _choosenStock;
+            stockData.StockSymbol = _choosenStock;
             stockData.PurchasePrice = _purchasePrice;
             stockData.SalePrice = _salePrice;
+            //stockData.DownloadString();
             stockData.CompareValues();
         }
 
