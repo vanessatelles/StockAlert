@@ -6,7 +6,7 @@ namespace StockAlert
     public class EmailMessage
     {
         // Field
-        private string _server, _sender, _receiver, _username, _password, _message;        
+        private string? _server, _port, _sender, _receiver, _username, _password, _message;        
         
         // Properties
         public string Message { get { return _message; } set { if (value != null) _message = value; } }
@@ -16,6 +16,7 @@ namespace StockAlert
         public EmailMessage()
         {
             _server = ConfigurationManager.AppSettings["server"];
+            _port = ConfigurationManager.AppSettings["port"];
             _sender = ConfigurationManager.AppSettings["sender"];
             _receiver = ConfigurationManager.AppSettings["receiver"];
             _username = ConfigurationManager.AppSettings["username"];
@@ -29,7 +30,7 @@ namespace StockAlert
 
             mail.From = new MailAddress(_sender);
             mail.To.Add(_receiver);
-            smtpServer.Port = 587;
+            smtpServer.Port = Int32.Parse(_port);
             smtpServer.Credentials = new System.Net.NetworkCredential(_username, _password);
             smtpServer.EnableSsl = true;
 

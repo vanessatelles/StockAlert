@@ -9,14 +9,14 @@ namespace StockAlert
         private static float _salePrice;
         private static float _purchasePrice;
         
+
         static void Main(string[] args)
         {
             //Reference values            
             _choosenStock = args[0];
             _salePrice = float.Parse(args[1], CultureInfo.InvariantCulture.NumberFormat);
             _purchasePrice = float.Parse(args[2], CultureInfo.InvariantCulture.NumberFormat);
-
-            
+                                    
             SetTimer();
 
             Console.WriteLine("Stock alert fires the event every two minutes. Press the Enter key to exit the application.\n");
@@ -33,13 +33,15 @@ namespace StockAlert
         /// <summary>
         /// 
         /// </summary>
+        
         private static void StockValues()
         {
             StockData stockData = new StockData();
             stockData.Stock = _choosenStock;
             stockData.PurchasePrice = _purchasePrice;
             stockData.SalePrice = _salePrice;
-            stockData.CompareValues();
+            //stockData.CompareValues();
+            stockData.GetData();
         }
 
         
