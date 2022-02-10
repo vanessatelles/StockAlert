@@ -15,17 +15,15 @@ namespace StockAlert
 
         public void CompareValues()
         {
-            StockAPIData timeSeries = DownloadString();
+            StockAPIData stockAPIData = DownloadString();            
 
-            if (float.Parse(timeSeries.price, CultureInfo.InvariantCulture.NumberFormat) > _salePrice)
+            if (float.Parse(stockAPIData.price, CultureInfo.InvariantCulture.NumberFormat) > _salePrice)
             {
-                CallMessenger("Sell", timeSeries);
-                //Console.WriteLine("Sell.");
+                CallMessenger("Sell");
             }
-            else if (float.Parse(timeSeries.price, CultureInfo.InvariantCulture.NumberFormat) < _purchasePrice)
+            else if (float.Parse(stockAPIData.price, CultureInfo.InvariantCulture.NumberFormat) < _purchasePrice)
             {
-                CallMessenger("Buy", timeSeries);
-                //Console.WriteLine("Buy.");
+                CallMessenger("Buy");
             }
             else
             {
@@ -34,11 +32,12 @@ namespace StockAlert
         }
 
         
-        private void CallMessenger(string message, StockAPIData timeSeries)
+        private void CallMessenger(string message)
         {
             EmailMessage emailMessage = new EmailMessage();
             emailMessage.Message = $"Sugestion: {message} {_stockSymbol}";
             emailMessage.SendMessage();
+
             Console.WriteLine(emailMessage.Message);
         }
     }

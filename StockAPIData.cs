@@ -7,6 +7,7 @@ namespace StockAlert
 {
     public class StockAPIData
     {
+        // Fields
         public string? _endPoint, _apiKey, _stockSymbol;
 
         // Properties
@@ -24,9 +25,14 @@ namespace StockAlert
 
         public StockAPIData DownloadString()
         {
-            string response = webClient.DownloadString(_endPoint + _stockSymbol + "&apikey=" + _apiKey);
+            string response = webClient.DownloadString(_endPoint + _stockSymbol + "&apikey=" + _apiKey);            
             StockAPIData stockAPIData = JsonSerializer.Deserialize<StockAPIData>(response);
-            //Console.WriteLine($"Price: {stockAPIData.price}");
+
+            if (stockAPIData.price == null)
+            {
+                Console.WriteLine($"Fail: Error with StockAPI.");
+                Environment.Exit(0);
+            }
 
             return stockAPIData;
 

@@ -26,7 +26,7 @@ namespace StockAlert
 
         private SmtpClient ServerConnection()
         {
-            SmtpClient smtpServer = new SmtpClient(_server);
+            SmtpClient smtpServer = new SmtpClient(_server); 
 
             mail.From = new MailAddress(_sender);
             mail.To.Add(_receiver);
@@ -42,9 +42,18 @@ namespace StockAlert
         {
             SmtpClient smtpServer = ServerConnection();
 
-            mail.Subject = "Stock Alert";
-            mail.Body = _message;
-            smtpServer.Send(mail);
+            try
+            {
+                mail.Subject = "Stock Alert";
+                mail.Body = _message;
+                smtpServer.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Environment.Exit(0);
+            }
+
         }
     }
 }
