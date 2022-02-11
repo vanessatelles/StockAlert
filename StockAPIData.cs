@@ -22,6 +22,10 @@ namespace StockAlert
         }
                 
 
+        /// <summary>
+        /// Download and parse json data from TwelveData API.
+        /// </summary>
+        /// <returns></returns>
         public StockAPIData DownloadString()
         {
             string response = webClient.DownloadString(_endPoint + _stockSymbol + "&apikey=" + _apiKey);            

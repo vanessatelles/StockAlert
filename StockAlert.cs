@@ -13,8 +13,6 @@ namespace StockAlert
         static void Main(string[] args)
         {
             ArrayInfo(args);
-
-            //Reference values
             SetReferenceValues(args[0], args[1], args[2]);            
                                     
             SetTimer();
@@ -41,16 +39,15 @@ namespace StockAlert
             }
         }
 
-    
+        
         private static void SetReferenceValues( string chosenStock, string salePrice, string purchasePrice) 
         {
             _chosenStock = chosenStock;
             _salePrice = float.Parse(salePrice, CultureInfo.InvariantCulture.NumberFormat);
             _purchasePrice = float.Parse(purchasePrice, CultureInfo.InvariantCulture.NumberFormat);
         }
-         
+        
 
-       
         private static void SetTimer()
         {
             _timer = new System.Timers.Timer(120000);
@@ -58,7 +55,6 @@ namespace StockAlert
             _timer.AutoReset = true;
             _timer.Enabled = true;
         }
-
 
 
         public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
