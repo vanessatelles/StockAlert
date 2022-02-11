@@ -27,7 +27,7 @@ namespace StockAlert
             }
             else
             {
-                Console.WriteLine("No action needed.");
+                Console.WriteLine($"{DateTime.Now.ToString("h:mm:ss")} - No action needed.");
             }
         }
 
@@ -35,7 +35,7 @@ namespace StockAlert
         private void CallMessenger(string message)
         {
             EmailMessage emailMessage = new EmailMessage();
-            emailMessage.Message = $"Sugestion: {message} {_stockSymbol}";
+            emailMessage.Message = $"{DateTime.Now.ToString("h:mm:ss")} - Sugestion: {message} {_stockSymbol}";
             emailMessage.SendMessage();
 
             Console.WriteLine(emailMessage.Message);

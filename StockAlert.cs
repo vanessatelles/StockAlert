@@ -64,7 +64,7 @@ namespace StockAlert
         
         private static void SetTimer()
         {
-            _timer = new System.Timers.Timer(30000);
+            _timer = new System.Timers.Timer(120000);
             _timer.Elapsed += OnTimedEvent;
             _timer.AutoReset = true;
             _timer.Enabled = true;
