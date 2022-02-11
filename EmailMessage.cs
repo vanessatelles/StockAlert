@@ -24,6 +24,10 @@ namespace StockAlert
         }
 
 
+        /// <summary>
+        /// Set the credentials, port, and enable SSL to the SMTP server.
+        /// </summary>
+        /// <returns></returns>
         private SmtpClient ServerConnection()
         {
             SmtpClient smtpServer = new SmtpClient(_server); 
@@ -38,6 +42,9 @@ namespace StockAlert
         }
 
 
+        /// <summary>
+        /// The method sends the message to the email address with the key "receiver" in the app.config file.
+        /// </summary>
         public void SendMessage()
         {
             SmtpClient smtpServer = ServerConnection();

@@ -29,7 +29,7 @@ namespace StockAlert
         }
 
 
-        
+       
         private static void ArrayInfo(string[] array)
         {
             if (array.Length != 3)
@@ -48,6 +48,7 @@ namespace StockAlert
         }
         
 
+        
         private static void SetTimer()
         {
             _timer = new System.Timers.Timer(120000);
@@ -57,6 +58,7 @@ namespace StockAlert
         }
 
 
+        
         public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             StockData stockData = new StockData();

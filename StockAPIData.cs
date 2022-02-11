@@ -20,10 +20,10 @@ namespace StockAlert
             _endPoint = "https://api.twelvedata.com/price?symbol=";
             _apiKey = ConfigurationManager.AppSettings["apiKey"];
         }
-                
+
 
         /// <summary>
-        /// Download and parse json data from TwelveData API.
+        /// The method downloads and parses the json data from Twelve Data API.
         /// </summary>
         /// <returns></returns>
         public StockAPIData DownloadString()
