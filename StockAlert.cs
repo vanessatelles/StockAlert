@@ -30,9 +30,7 @@ namespace StockAlert
             
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+
         
         private static void ArrayInfo(string[] array)
         {
@@ -43,25 +41,16 @@ namespace StockAlert
             }
         }
 
-
+    
         private static void SetReferenceValues( string chosenStock, string salePrice, string purchasePrice) 
         {
             _chosenStock = chosenStock;
             _salePrice = float.Parse(salePrice, CultureInfo.InvariantCulture.NumberFormat);
             _purchasePrice = float.Parse(purchasePrice, CultureInfo.InvariantCulture.NumberFormat);
         }
+         
 
-
-        private static void StockValues()
-        {
-            StockData stockData = new StockData();
-            stockData.StockSymbol = _chosenStock;
-            stockData.PurchasePrice = _purchasePrice;
-            stockData.SalePrice = _salePrice;
-            stockData.CompareValues();
-        }
-
-        
+       
         private static void SetTimer()
         {
             _timer = new System.Timers.Timer(120000);
@@ -71,9 +60,14 @@ namespace StockAlert
         }
 
 
+
         public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            StockValues();
+            StockData stockData = new StockData();
+            stockData.StockSymbol = _chosenStock;
+            stockData.PurchasePrice = _purchasePrice;
+            stockData.SalePrice = _salePrice;
+            stockData.CompareValues();
         }
     }
 
