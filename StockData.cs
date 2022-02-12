@@ -19,13 +19,13 @@ namespace StockAlert
         /// </summary>
         public void CompareValues()
         {
-            StockAPIData stockAPIData = DownloadString();            
+            string stockAPIData = DownloadString();            
 
-            if (float.Parse(stockAPIData.price, CultureInfo.InvariantCulture.NumberFormat) > _salePrice)
+            if (float.Parse(stockAPIData, CultureInfo.InvariantCulture.NumberFormat) > _salePrice)
             {
                 CallMessenger("Sell");
             }
-            else if (float.Parse(stockAPIData.price, CultureInfo.InvariantCulture.NumberFormat) < _purchasePrice)
+            else if (float.Parse(stockAPIData, CultureInfo.InvariantCulture.NumberFormat) < _purchasePrice)
             {
                 CallMessenger("Buy");
             }

@@ -10,25 +10,27 @@ namespace StockAlert
         public string? _endPoint, _apiKey, _stockSymbol;
 
         // Properties
-        public string? price { get; set; }        
+        public string? price { get; set; }
         public string StockSymbol { get { return _stockSymbol; } set { if (value != null) _stockSymbol = value; } }
 
-        WebClient webClient = new WebClient();
-
+        // TODO comment
         public StockAPIData()
         {
             _endPoint = "https://api.twelvedata.com/price?symbol=";
             _apiKey = ConfigurationManager.AppSettings["apiKey"];
         }
 
+        
+        WebClient webClient = new WebClient();
 
+        // TODO return....
         /// <summary>
         /// The method downloads and parses the json data from Twelve Data API.
         /// </summary>
-        /// <returns></returns>
-        public StockAPIData DownloadString()
+        /// <returns>(stockAPIData) Returns </returns>
+        public string DownloadString()
         {
-            string response = webClient.DownloadString(_endPoint + _stockSymbol + "&apikey=" + _apiKey);            
+            string response = webClient.DownloadString(_endPoint + _stockSymbol + "&apikey=" + _apiKey);
             StockAPIData stockAPIData = JsonSerializer.Deserialize<StockAPIData>(response);
 
             if (stockAPIData.price == null)
@@ -37,8 +39,9 @@ namespace StockAlert
                 Environment.Exit(0);
             }
 
-            return stockAPIData;
+            return stockAPIData.price;
 
         }
     }
+
 }
