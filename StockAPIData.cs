@@ -13,7 +13,10 @@ namespace StockAlert
         public string? price { get; set; }
         public string StockSymbol { get { return _stockSymbol; } set { if (value != null) _stockSymbol = value; } }
 
-        // TODO comment
+        /// <summary>
+        /// Initializes a new instance of the StockAPI class by using configuration file settings 
+        /// and the API endpoint for real-time data.
+        /// </summary>
         public StockAPIData()
         {
             _endPoint = "https://api.twelvedata.com/price?symbol=";
@@ -23,11 +26,11 @@ namespace StockAlert
         
         WebClient webClient = new WebClient();
 
-        // TODO return....
+ 
         /// <summary>
         /// The method downloads and parses the json data from Twelve Data API.
         /// </summary>
-        /// <returns>(stockAPIData) Returns </returns>
+        /// <returns>(string) Returns the stock real-time price.</returns>
         public string DownloadString()
         {
             string response = webClient.DownloadString(_endPoint + _stockSymbol + "&apikey=" + _apiKey);
