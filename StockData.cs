@@ -43,7 +43,7 @@ namespace StockAlert
         private void CallMessenger(string message)
         {
             EmailMessage emailMessage = new EmailMessage();
-            emailMessage.Message = $"{DateTime.Now.ToString("h:mm:ss")} - Sugestion: {message} {_stockSymbol}";
+            emailMessage.Message = $"{DateTime.Now.ToString("h:mm:ss")} - Sugestion: {message} {StockSymbol}";
             emailMessage.SendMessage();
 
             Console.WriteLine(emailMessage.Message);

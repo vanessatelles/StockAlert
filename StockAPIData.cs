@@ -7,7 +7,7 @@ namespace StockAlert
     public class StockAPIData
     {
         // Fields
-        public string? _endPoint, _apiKey, _stockSymbol;
+        protected string? _endPoint, _apiKey, _stockSymbol;
 
         // Properties
         public string? price { get; set; }
@@ -31,7 +31,7 @@ namespace StockAlert
         /// The method downloads and parses the json data from Twelve Data API.
         /// </summary>
         /// <returns>(string) Returns the stock real-time price.</returns>
-        public string DownloadString()
+        protected string DownloadString()
         {
             string response = webClient.DownloadString(_endPoint + _stockSymbol + "&apikey=" + _apiKey);
             StockAPIData stockAPIData = JsonSerializer.Deserialize<StockAPIData>(response);
