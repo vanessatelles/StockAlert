@@ -39,12 +39,12 @@ namespace StockAlert
         {
             if (array.Length < 3)
             {
-                Console.WriteLine("Missing argument.");
+                Console.WriteLine("Fail: Missing argument.");
                 Environment.Exit(0);
             }
             if (array.Length > 3)
             {
-                Console.WriteLine("Too many argument.");
+                Console.WriteLine("Fail: Too many argument.");
                 Environment.Exit(0);
             }
         }
