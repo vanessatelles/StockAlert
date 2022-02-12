@@ -1,68 +1,78 @@
-﻿using System.Globalization;
+﻿using StockAlert;
+using System.Globalization;
 
 namespace StockAlert
 {
-    class Principal 
+    class StockAlert 
     {
-        private static System.Timers.Timer _timer;
-        private static string? _chosenStock;
-        private static float _salePrice;
-        private static float _purchasePrice;
-        
+        private System.Timers.Timer _timerCounter;
+        private string? _chosenStock;
+        private float _salePrice;
+        private float _purchasePrice;
+
 
         static void Main(string[] args)
         {
-            ArrayInfo(args);
-            SetReferenceValues(args[0], args[1], args[2]);          
-            SetTimer();
+            StockAlert stockAlert = new StockAlert(); 
+
+            stockAlert.ArgumentCheck(args);
+            stockAlert.SetReferenceValues(args[0], args[1], args[2]);       
+            stockAlert.SetTimer();
 
             Console.WriteLine("Stock alert fires the event every two minutes. Press the Enter key to exit the application.\n");
-            Console.WriteLine($"Stock Alert is current using {_chosenStock} with reference values as: \nSale price: \t{_salePrice}\nPurchase price:\t{_purchasePrice}");
+            Console.WriteLine($"Stock Alert is current using {stockAlert._chosenStock} with reference values as: \nSale price: \t{stockAlert._salePrice}\nPurchase price:\t{stockAlert._purchasePrice}");
             Console.ReadLine();
 
-            _timer.Stop();
-            _timer.Dispose();
+            stockAlert._timerCounter.Stop();
+            stockAlert._timerCounter.Dispose();
 
-            Console.WriteLine("Terminating the application.");            
+            Console.WriteLine("Terminating the application.");
         }
 
 
         /// <summary>
-        /// If the array length it's less than 3 it means one or more arguments are missing.
+        /// If the array's length is less than 3 it means one or more arguments are missing.
+        /// If the array's length is greater than 3 it means it has too many arguments.
         /// </summary>
-        /// <param name="array"></param>
-        private static void ArrayInfo(string[] array)
+        /// <param name="array">(string[]) Array with the reference arguments.</param>
+        private void ArgumentCheck(string[] array)
         {
-            if (array.Length != 3)
+            if (array.Length < 3)
             {
                 Console.WriteLine("Missing argument.");
                 Environment.Exit(0);
             }
+            if (array.Length > 3)
+            {
+                Console.WriteLine("Too many argument.");
+                Environment.Exit(0);
+            }
         }
 
+        
         /// <summary>
         /// Set the arguments passed by the user as reference values.
         /// </summary>
-        /// <param name="chosenStock"></param>
-        /// <param name="salePrice"></param>
-        /// <param name="purchasePrice"></param>
-        private static void SetReferenceValues( string chosenStock, string salePrice, string purchasePrice) 
+        /// <param name="chosenStock">(string) Stock's label.</param>
+        /// <param name="salePrice">(float) Stock's sale price.</param>
+        /// <param name="purchasePrice">(float) Stock's purchase price.</param>
+        private void SetReferenceValues(string chosenStock, string salePrice, string purchasePrice)
         {
             _chosenStock = chosenStock;
             _salePrice = float.Parse(salePrice, CultureInfo.InvariantCulture.NumberFormat);
             _purchasePrice = float.Parse(purchasePrice, CultureInfo.InvariantCulture.NumberFormat);
         }
-        
+
 
         /// <summary>
         /// It fires OnTimedEvent event every two minutes (120000 milliseconds).
         /// </summary>
-        private static void SetTimer()
+        private void SetTimer()
         {
-            _timer = new System.Timers.Timer(120000);
-            _timer.Elapsed += OnTimedEvent;
-            _timer.AutoReset = true;
-            _timer.Enabled = true;
+            _timerCounter = new System.Timers.Timer(120000);
+            _timerCounter.Elapsed += OnTimedEvent;
+            _timerCounter.AutoReset = true;
+            _timerCounter.Enabled = true;
         }
 
 
@@ -72,7 +82,7 @@ namespace StockAlert
         /// </summary>
         /// <param name="source"></param>
         /// <param name="e"></param>
-        public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        public void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             StockData stockData = new StockData();
             stockData.StockSymbol = _chosenStock;
