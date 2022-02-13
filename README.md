@@ -33,7 +33,7 @@ Aplicação de console, deve ser chamado via linha de comando com 3 seguintes pa
 
 #### Árvore de diretório
 
-O executável StockAlert.exe está localizado na pasta publish, seguindo a árvore de diretório:
+O executável ``StockAlert.exe`` está localizado na pasta publish, seguindo a árvore de diretório:
 
 ```bash
 ├── bin
