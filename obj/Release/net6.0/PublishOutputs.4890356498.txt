@@ -1,0 +1,16 @@
+C:\Users\vanes\Documents\StockChallenge\StockAlert.exe
+C:\Users\vanes\Documents\StockChallenge\StockAlert.dll
+C:\Users\vanes\Documents\StockChallenge\StockAlert.deps.json
+C:\Users\vanes\Documents\StockChallenge\StockAlert.runtimeconfig.json
+C:\Users\vanes\Documents\StockChallenge\StockAlert.pdb
+C:\Users\vanes\Documents\StockChallenge\CsvHelper.dll
+C:\Users\vanes\Documents\StockChallenge\Flurl.dll
+C:\Users\vanes\Documents\StockChallenge\Flurl.Http.dll
+C:\Users\vanes\Documents\StockChallenge\Newtonsoft.Json.dll
+C:\Users\vanes\Documents\StockChallenge\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\vanes\Documents\StockChallenge\System.Text.Encodings.Web.dll
+C:\Users\vanes\Documents\StockChallenge\System.Text.Json.dll
+C:\Users\vanes\Documents\StockChallenge\YahooFinanceApi.dll
+C:\Users\vanes\Documents\StockChallenge\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\vanes\Documents\StockChallenge\System.Configuration.ConfigurationManager.dll
+C:\Users\vanes\Documents\StockChallenge\System.Configuration.ConfigurationManager.xml

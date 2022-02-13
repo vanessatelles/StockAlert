@@ -1,0 +1,17 @@
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\StockAlert.exe
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\StockAlert.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\StockAlert.deps.json
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\StockAlert.runtimeconfig.json
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\StockAlert.dll.config
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\StockAlert.pdb
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\CsvHelper.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\Flurl.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\Flurl.Http.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\Newtonsoft.Json.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\System.Text.Encodings.Web.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\System.Text.Json.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\YahooFinanceApi.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\System.Configuration.ConfigurationManager.dll
+C:\Users\vanes\Documents\StockChallenge\bin\Release\net6.0\publish\System.Configuration.ConfigurationManager.xml

@@ -1,6 +1,4 @@
 .vs
-bin
-obj
 runtimes
 App.config
 *.exe
