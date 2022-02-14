@@ -33,7 +33,7 @@ Aplicação de console, deve ser chamado via linha de comando com 3 seguintes pa
 
 #### Árvore de diretório
 
-O executável ``StockAlert.exe`` está localizado na pasta publish, seguindo a árvore de diretório:
+O executável ``StockAlert.exe`` e o arquivo de configuração ``StockAlert.dll.config`` estão localizados na pasta publish, seguindo a árvore de diretório:
 
 ```bash
 ├── bin
@@ -67,11 +67,12 @@ E retorna um JSON com a seguinte estrutura:
 }
 ```
 
-## App.config
+## Arquivo de Configuração
 
 ### Servidor SMTP
 
-O programa lê de um arquivo de configuração ``app.config`` as informações de configurações de acesso ao servidor de SMTP que irá enviar a mensagem e o endereço de e-mail do destinatário dos alertas.
+O programa lê de um arquivo de configuração ``StockAlert.dll.config`` as informações de configurações de acesso ao servidor de SMTP que irá enviar a mensagem e o endereço de e-mail do destinatário dos alertas.
+
 ```c#
 Hostname key: "server"
 Port key: "port"
@@ -83,7 +84,7 @@ Password key: "password"
 
 ### API key
 
-Para utilizar a API de cotação é necessário utilizar uma chave, a mesma é resgatada do arquivo de configuração ``app.config``.
+Para utilizar a API de cotação é necessário utilizar uma chave, a mesma é resgatada do arquivo de configuração ``StockAlert.dll.config``.
 
 ```c#
 TwelveData API key: "apiKey"

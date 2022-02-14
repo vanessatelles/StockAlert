@@ -19,10 +19,5 @@ C:\Users\vanes\Documents\StockChallenge\obj\Debug\net6.0\StockAlert.dll
 C:\Users\vanes\Documents\StockChallenge\obj\Debug\net6.0\ref\StockAlert.dll
 C:\Users\vanes\Documents\StockChallenge\obj\Debug\net6.0\StockAlert.pdb
 C:\Users\vanes\Documents\StockChallenge\obj\Debug\net6.0\StockAlert.genruntimeconfig.cache
-C:\Users\vanes\Documents\StockChallenge\bin\Debug\net6.0\CsvHelper.dll
-C:\Users\vanes\Documents\StockChallenge\bin\Debug\net6.0\Flurl.dll
-C:\Users\vanes\Documents\StockChallenge\bin\Debug\net6.0\Flurl.Http.dll
-C:\Users\vanes\Documents\StockChallenge\bin\Debug\net6.0\Newtonsoft.Json.dll
-C:\Users\vanes\Documents\StockChallenge\bin\Debug\net6.0\YahooFinanceApi.dll
 C:\Users\vanes\Documents\StockChallenge\bin\Debug\net6.0\System.Configuration.ConfigurationManager.xml
 C:\Users\vanes\Documents\StockChallenge\bin\Debug\net6.0\StockAlert.dll.config
