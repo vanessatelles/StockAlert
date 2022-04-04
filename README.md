@@ -1,6 +1,6 @@
-﻿# C# Challenge
+﻿# StockAlert
 
-O objetivo do sistema é avisar, via e-mail, caso a cotação de um ativo da B3 caia mais do que certo nível, ou suba acima de outro.
+O objetivo da aplicação é avisar, via e-mail, caso a cotação de um ativo da B3 caia mais do que certo nível, ou suba acima de outro.
 A decisão de compra e venda é definida pela comparação entre os valores de referência e o valor obtido em tempo real pela API. 
 
 Essa decisão é então repassada em formato de token para o método responsável pelo envio da mensagem, o qual irá disparar um e-mail para o destinatário contendo uma das seguintes mensagens:
@@ -31,21 +31,6 @@ Aplicação de console, deve ser chamado via linha de comando com 3 seguintes pa
 
 `` StockAlert.exe PETR4 22.67 22.59``
 
-#### Árvore de diretório
-
-O executável ``StockAlert.exe`` e o arquivo de configuração ``StockAlert.dll.config`` estão localizados na pasta publish, seguindo a árvore de diretório:
-
-```bash
-├── bin
-│   ├── Debug
-│   └── Release
-│   │   └── net6.0
-│   │   │   ├── publish
-│   │   │   ├── ref
-│   │   │   └── runtimes
-├── obj
-└── Properties
-```
 
 ## API de cotação
 
